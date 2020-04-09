@@ -1,0 +1,195 @@
+﻿@model DetonaFit.Models.Instrutor
+
+@{
+    ViewBag.Title = "View";
+}
+
+@using (Html.BeginForm("CadastrarInstrutor", "GerenciarInstrutor", FormMethod.Post, new { @id = "formInstrutor" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Instrutor</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model=> model.ID)
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.Label("Nome Completo")
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", maxlength = 300 })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Atividade)
+            </div>
+            <div class="col-md-10">
+                <select class="custom-select form-control atividadeInstrutor">
+                    <option selected>Selecione</option>
+                    <option value="M">Musculação</option>
+                    <option value="G">Atividade em Grupo</option>                    
+                </select>
+                @Html.HiddenFor(model => model.Atividade)
+                @Html.ValidationMessageFor(model => model.Atividade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Identidade)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Identidade, new { @class = "form-control", maxlength = 12 })
+                @Html.ValidationMessageFor(model => model.Identidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.CPF)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CPF, new { @class = "form-control", @placeholder = "000.000.000-00" , maxlength = 15})
+                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Sexo)
+            </div>
+            <div class="col-md-10" style="margin-top: -35px;margin-left: -8px;">
+                <div class="col-md-5">
+                    <label>  Feminino</label>   @Html.RadioButtonFor(model => model.Sexo, "F", new { @class = "form-control", @style = "transform: scale(0.5);box-shadow: none;width: 100px;margin-left: -17px;" })
+                </div>
+                <div class="col-md-5">
+                    <label>Masculino</label>   @Html.RadioButtonFor(model => model.Sexo, "M", new { @class = "form-control", @style = "transform: scale(0.5);box-shadow: none;width: 100px;margin-left: -17px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Endereco,  new { @class = "form-control" , maxlength = 250})
+                @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Numero)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Numero,  new { @class = "form-control", maxlength = 6 })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Bairro)
+            </div>           
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Bairro, new { @class = "form-control" , maxlength = 100})
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.CEP)
+            </div>          
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CEP, new { @class = "form-control", @placeholder = "00000-000" , maxlength = 9})
+                @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Cidade)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Cidade, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Estado)
+            </div>
+            <div class="col-md-10">
+                <select class="custom-select form-control estadosInstrutor">
+                    <option selected>Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul </option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro </option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                @Html.HiddenFor(model => model.Estado, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-success pull-right" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Voltar", "GerenciarInstrutor")
+</div>

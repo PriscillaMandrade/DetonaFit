@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "GerenciarAluno";
+}
+
+@if (TempData["msgAluno"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msgAluno"]
+    </div>
+}
+
+<div class="container">
+    <div class="form-group">
+        <i class="fa fa-user-plus" style="font-size:50px;margin-top:10px" title="Adicionar Novo Aluno" id="addNovoAluno"></i>
+    </div>
+
+    <div class="form-group" style="margin-top:10px">
+        <table id="tb_alunos" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="dt-head-center">ID</th>
+                    <th class="dt-head-center">NOME</th>
+                    <th class="dt-head-center">IDENTIDADE</th>
+                    <th class="dt-head-center">CPF</th>
+                    <th class="dt-head-center">SITUAÇÃO</th>
+                    <th class="dt-head-center">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
